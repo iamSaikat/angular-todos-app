@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="todoapp">
+      <div class="header">
+          <h1>update todos</h1>
+          <form [formGroup]="todoForm" novalidate (ngSubmit)="updateTask(todoForm.value)">
+          <input class="new-todo" formControlName = "task"
+          placeholder="What needs to be done?">
+          <button type="submit" class="add">Update</button>
+          </form>
+      </div>
+  </div>
+  <p class='error' *ngIf="todoForm.get('task').hasError('required') &&
+                  todoForm.get('task').touched">Please add any task</p>
+  </div>
