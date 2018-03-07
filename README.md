@@ -1,13 +1,13 @@
-# Angular4TodoList
+# Angular5TodoList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
 
 ## Init dependencies (frontend and backend)
 
 Run 
 
 ```
-npm install && cd backend && npm install && cd ..
+npm install && ng serve
 ```
 
 ## Development server (frontend and backend)
