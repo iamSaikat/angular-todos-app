@@ -1,21 +1,25 @@
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Router } from '@angular/router';
 import { Todo } from '../models/todo';
 import { TodoService } from './todo.service';
+
 
 
 @Component({
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnDestroy, OnInit {
   todoForm: FormGroup;
   alltodolist: Array<Todo>;
   formValidError = false;
   completedTodos: number;
   activeTodos: number;
+  private serviceSubscription: Subscription;
 
   todosReport () {
     this.activeTodos = this.alltodolist.filter(v => v.done === false).length;
@@ -28,7 +32,7 @@ export class TodoComponent implements OnInit {
   ) { }
 
   getTodoList() {
-    this.service.getTodos()
+    this.serviceSubscription = this.service.getTodos()
     .subscribe( data => {this.alltodolist = data;
       this.todosReport();
       console.log(data);
@@ -42,6 +46,9 @@ export class TodoComponent implements OnInit {
     this.getTodoList();
   }
 
+  ngOnDestroy() {
+    this.serviceSubscription.unsubscribe();
+  }
   randnum(): number {
     return Math.floor(Math.random() * 90000) + 10000;
   }

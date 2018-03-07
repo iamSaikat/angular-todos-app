@@ -43,7 +43,7 @@ export class TodoEditComponent implements OnInit {
   }
   updateTask(todoname) {
     console.log(todoname);
-    const updatedata = {id: this.id, text: todoname.task, done: false}
+    const updatedata = {id: this.id, text: todoname.task, done: false};
     this.service.updateTodos(updatedata);
     this.router.navigate(['/home']);
   }
