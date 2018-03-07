@@ -6,6 +6,7 @@
     "ng": "ng",
     "prestart": "node ./backend/bin/www &",
     "start": "ng serve --proxy-config proxy.conf.json",
+    "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

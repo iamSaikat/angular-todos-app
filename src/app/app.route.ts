@@ -1,12 +1,8 @@
-import { TodoEditComponent } from './todo-edit/todo-edit.component';
-import { TodoFormComponent } from 'app/todo-form/todo-form.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { DoneListComponent } from './done-list/done-list.component';
-import {Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 
-
-export const appRoutes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
@@ -14,15 +10,14 @@ export const appRoutes: Routes = [
   },
   {
     path: 'home',
-    component: TodoFormComponent
-  },
-  {
-    path: 'todolist',
-    component: TodoListComponent
-  },
-  {
-    path: 'edit/:id',
-    component: TodoEditComponent
+    loadChildren: './todo/todo.module#TodoModule'
   }
 ];
+
+@NgModule({
+  imports: [ RouterModule.forRoot(routes, {enableTracing: false}) ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}
+
 

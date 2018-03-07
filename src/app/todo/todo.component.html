@@ -11,10 +11,9 @@
 	</div>
 </div>
 <p class='error' *ngIf="todoForm.get('task').hasError('required') &&
-			 todoForm.get('task').touched">Please add any task</p>
+			 todoForm.get('task').touched && formValidError">Please add any task</p>
 </div>
-<div class="container">
-	<h2>Todos List</h2>
-	<p *ngFor="let x of alltodolist">{{x.text}}</p>
+<div>
+	<p>Active todos: {{activeTodos}} Completed todos: {{completedTodos}} </p>
 </div>
-
+<router-outlet></router-outlet>

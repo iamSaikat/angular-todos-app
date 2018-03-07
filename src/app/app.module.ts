@@ -1,32 +1,23 @@
-import { TodoEditComponent } from './todo-edit/todo-edit.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpModule} from '@angular/http';
-import {RouterModule} from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule  } from '@angular/forms';
+import { AppComponent } from './app.component';
 
-import {AppComponent} from './app.component';
-import {TodoListService} from './services/todo-list.service';
-import {appRoutes} from './app.route'
-import { TodoFormComponent } from 'app/todo-form/todo-form.component';
-import { TodoListComponent } from 'app/todo-list/todo-list.component';
-import { DoneListComponent } from 'app/done-list/done-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app.route';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoFormComponent,
-    TodoListComponent,
-    DoneListComponent,
-    TodoEditComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [TodoListService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
