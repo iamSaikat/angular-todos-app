@@ -15,51 +15,37 @@ import { TodoService } from './todo.service';
 })
 export class TodoComponent implements OnDestroy, OnInit {
   todoForm: FormGroup;
-  alltodolist: Array<Todo>;
+  alltodolist: Observable<any>;
   formValidError = false;
-  completedTodos: number;
-  activeTodos: number;
+  report: any;
   private serviceSubscription: Subscription;
-
-  todosReport () {
-    this.activeTodos = this.alltodolist.filter(v => v.done === false).length;
-    this.completedTodos = this.alltodolist.filter(v => v.done === true).length;
-  }
 
   constructor(
     private service: TodoService,
     private router: Router
   ) { }
 
-  getTodoList() {
-    this.serviceSubscription = this.service.getTodos()
-    .subscribe( data => {this.alltodolist = data;
-      this.todosReport();
-      console.log(data);
-    });
-  }
-
   ngOnInit() {
     this.todoForm = new FormGroup ({
       task: new FormControl(null , Validators.required),
     });
-    this.getTodoList();
+    this.alltodolist = this.service.todos; // subscribe
+
+    this.service.getAllTodos();
+    this.service.report.subscribe(res => {
+      this.report = res;
+    });
   }
 
   ngOnDestroy() {
-    this.serviceSubscription.unsubscribe();
-  }
-  randnum(): number {
-    return Math.floor(Math.random() * 90000) + 10000;
+    // this.serviceSubscription.unsubscribe();
   }
 
   addTask(formData: any) {
     if (formData.task != null) {
-    const setdata = {id: this.randnum(), text: formData.task, done: false};
-    console.log(setdata);
-    this.service.setTodos(setdata);
+    const setdata = {'text': formData.task, 'done': false};
+    this.service.createTodos(setdata);
     this.formValidError = false;
-    // this.getTodoList();
     this.todoForm.reset();
     this.router.navigate(['/home']);
     } else {

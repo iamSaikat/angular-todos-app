@@ -2,12 +2,12 @@
   <h1>todos List</h1>
 </div>
 <div class="container">
-  <div class="text-center" *ngIf="alltodolist.length <= 0">
+  <div class="text-center" *ngIf="alltodolist?.length <= 0">
     <h4>You haven't assign any task yet !</h4>
   </div>
   <table class="table table-striped">
     <tbody>
-      <tr *ngFor="let x of alltodolist">
+      <tr *ngFor="let x of alltodolist | async ">
         <td><input type="checkbox" [checked]="x.done" (click)="todoDone(x)"/></td>
         <td style="width:80%">{{x.text}}</td>
         <td>

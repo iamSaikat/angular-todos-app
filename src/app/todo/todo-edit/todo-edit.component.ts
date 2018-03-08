@@ -13,7 +13,6 @@ import 'rxjs/add/operator/filter';
 export class TodoEditComponent implements OnInit {
   todoForm: FormGroup;
   id: number;
-  taskdetails: any;
 
   constructor(
     private activeroute: ActivatedRoute,
@@ -29,14 +28,11 @@ export class TodoEditComponent implements OnInit {
     this.activeroute.params.subscribe((params: Params) => {
       this.id = +params['id'];
       console.log(this.id);
-      this.service.getTodos()
-      .filter(value => value.length > 0)
+      this.service.getTodo(this.id)
       .subscribe(data => {
-        console.log('All todos:', data);
-        this.taskdetails = data.filter(item => item.id === this.id)[0];
-        console.log('Task Details', this.taskdetails);
+        console.log('Task Details', data);
         this.todoForm.patchValue({
-          task : this.taskdetails.text
+          task : data.text
         });
       });
     });
