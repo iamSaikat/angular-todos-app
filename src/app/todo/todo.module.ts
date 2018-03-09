@@ -1,12 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  CommonModule
+} from '@angular/common';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 
-import { TodoRoutingModule } from './todo-routing.module';
-import { TodoService } from 'app/todo/todo.service';
-import { TodoComponent } from './todo.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { ApiBaseService } from './../service/api-base.service';
+import {
+  TodoRoutingModule
+} from './todo-routing.module';
+import {
+  TodoService
+} from 'app/todo/todo.service';
+import {
+  TodoComponent
+} from './todo.component';
+import {
+  TodoListComponent
+} from './todo-list/todo-list.component';
 
 @NgModule({
   imports: [
@@ -19,8 +33,8 @@ import { ApiBaseService } from './../service/api-base.service';
     TodoComponent,
     TodoListComponent
   ],
-  providers : [
+  providers: [
     TodoService
   ]
 })
-export class TodoModule { }
+export class TodoModule {}

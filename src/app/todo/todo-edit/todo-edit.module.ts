@@ -1,9 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  CommonModule
+} from '@angular/common';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 
-import { TodoEditRoutingModule } from './todo-edit-routing.module';
-import { TodoEditComponent } from './todo-edit.component';
+import {
+  TodoEditRoutingModule
+} from './todo-edit-routing.module';
+import {
+  TodoEditComponent
+} from './todo-edit.component';
 
 @NgModule({
   imports: [
@@ -16,4 +27,4 @@ import { TodoEditComponent } from './todo-edit.component';
     TodoEditComponent
   ]
 })
-export class TodoEditModule { }
+export class TodoEditModule {}

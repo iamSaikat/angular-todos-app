@@ -1,19 +1,17 @@
-
 <div class="container">
-<div class="todoapp">
-  <div class="header">
-		<h1>todos</h1>
-		<form [formGroup]="todoForm" novalidate (ngSubmit)="addTask(todoForm.value)">
-		<input class="new-todo" formControlName = "task"
-		placeholder="What needs to be done?">
-		<button type="submit" class="add">Add</button>
-		</form>
-	</div>
-</div>
-<p class='error' *ngIf="todoForm.get('task').hasError('required') &&
+  <div class="todoapp">
+    <div class="header">
+      <h1>todos</h1>
+      <form [formGroup]="todoForm" novalidate (ngSubmit)="addTask(todoForm.value)">
+        <input class="new-todo" formControlName="task" placeholder="What needs to be done?">
+        <button type="submit" class="add">Add</button>
+      </form>
+    </div>
+  </div>
+  <p class='error' *ngIf="todoForm.get('task').hasError('required') &&
 			 todoForm.get('task').touched && formValidError">Please add any task</p>
 </div>
 <div>
-	<p>Active todos: {{report?.active}} Completed todos: {{report?.completed}} </p>
+  <p>Active todos: {{report?.active}} Completed todos: {{report?.completed}} </p>
 </div>
 <router-outlet></router-outlet>
