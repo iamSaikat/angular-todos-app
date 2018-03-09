@@ -52,6 +52,7 @@ export class TodoService {
     .subscribe(data => {
       this.dataStore.todos.push(data);
       this._todos.next(Object.assign({}, this.dataStore).todos);
+      this.getReport(this._todos.getValue());
     }, error => console.log('Could not create todo.'));
   }
 
@@ -65,6 +66,7 @@ export class TodoService {
       });
 
       this._todos.next(Object.assign({}, this.dataStore).todos);
+      this.getReport(this._todos.getValue());
     }, error => console.log('Could not delete todo.'));
   }
 
@@ -78,6 +80,7 @@ export class TodoService {
       });
 
       this._todos.next(Object.assign({}, this.dataStore).todos);
+      this.getReport(this._todos.getValue());
     }, error => console.log('Could not update todo.'));
   }
 
